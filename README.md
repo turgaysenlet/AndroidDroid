@@ -154,13 +154,13 @@ $ fastboot flash boot magisk_patched.img
 $ fastboot reboot
 ```
 22. Run <b>Magisk Manager</b>
-    1. Magisk Manager may fail to run, or freeze on start, may need few *Force stop*s before it runs - this is only happenning on Android 8.1.0, did not happen on Android 7.1.2
+    1. Magisk Manager may fail to run, or freeze on start, may need few *Force stop*s before it runs - this is only happening on Android 8.1.0, did not happen on Android 7.1.2
     2. Expect to see *Magisk is up to date* with and <b>INSTALL</b> button next to it
     3. This means device is rooted yet
 
 ### Install Ubuntu OS on the Phone
 * Rooted Android is required
-* This will install a native Linux disribution on your Android device, this is not an emulation or a virtual operating system. Because of this, it will be able to use the whole resource potential of the device
+* This will install a native Linux distribution on your Android device, this is not an emulation or a virtual operating system. Because of this, it will be able to use the whole resource potential of the device
 * <b>chroot</b>, which points Linux installation to the underlying Android Kernel enabled Linux to share the same Kernel as the Android Kernel
 1. Download <b>Linux Deploy</b> from Google <b>Play Store</b>
     1. If not found in search try this link https://play.google.com/store/apps/details?id=ru.meefik.linuxdeploy&hl=en_US
@@ -175,11 +175,11 @@ $ fastboot reboot
     1. Installation path: <b>File</b> (install the whole Linux OS into a single image file, easiest and cleanest install and can be backed up by copying the image)
     1. Installation path: <b>$(EXTERNAL_STORAGE)/linux.img</b> (location of the OS image file)
     1. Image size: <b>24000</b> (24GB storage, default is 2GB and it is not nearly enough for installing ROS)
-    1. User name: <b>android</b> (user name for login, ssh and VNC/remote desktop)
+    1. User name: <b>android</b> (username for login, ssh and VNC/remote desktop)
     1. User password: <b>something</b> (some password of your liking)
     1. SSH - Enable: <b>checked</b>
     1. GUI - Enable: <b>checked</b>
-    1. GUI - Graphics Subsystem: <b>X11</b> (graphocs system; X11-like regular Ubuntu desktop, VNC-virtual desktop, FrameBuffer-?, VNC works fine, but ROS GUI-based apps like *imageviewer* won't work
+    1. GUI - Graphics Subsystem: <b>X11</b> (graphics system; X11-like regular Ubuntu desktop, VNC-virtual desktop, FrameBuffer-?, VNC works fine, but ROS GUI-based apps like *imageviewer* won't work
     1. GUI - Desktop Environment: <b>MATE</b> (Ubuntu MATE style GUI, not as light as LXDE, but much usable)
     1. Click <b>back button</b> to get back to main screen
 5. If exists, backup previous Ubuntu
