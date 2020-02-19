@@ -1,6 +1,10 @@
 # AndroidDroid
-AndroidDroid - Android, Linux, ROS and Unity based robot code
+AndroidDroid - Android, Linux, ROS and Unity based robot
+
 ## Overview
+A robot that fully runs on an Android phone. 
+* Android app the retrive phone sensor data
+* Native Ubuntu Linux and ROS (Robot Operating System)
 
 ## Setup Steps
 ### Prerequisites
@@ -193,9 +197,8 @@ $ adb pull /storage/emulated/0/linux.img
     1. You can 
     1. Click on <b>OK</b>
     1. When completed expect to see ** message
-7. On a fast wireless network installation takes 10 minutes
-    1. 5 minutes to download
-    1. 5 minutes to install
+7. Installation may take more than an hour 
 
 ## References
-* For rooting, loosely following https://highonandroid.com/android-root/how-to-root-android-10-pixel-pixel-2-pixel-3-pixel-3a
+* For rooting, loosely following - https://highonandroid.com/android-root/how-to-root-android-10-pixel-pixel-2-pixel-3-pixel-3a
+* Robot Operating System (ROS) - http://ros.org/
