@@ -46,7 +46,41 @@ Now and every boot, expect to see a warning about bootloader cannot be verified 
 * This could be needed if you need to change the current version of the Android OS installed on your phone. Installing a version of Android that can easily be rooted is more important than the actual version number itself.
 * I will be installing Android 8.1.0 Build <b>OPM1.171019.012</b>. This seems to be an up-to-date Android 8 and it should be fine since in previous attempts rooting Android 10 with Magisk did not work. 
 1. Got to <b>Factory Images for Nexus and Pixel Devices</b> at https://developers.google.com/android/images
-2. Download <b>8.1.0 (OPM1.171019.012, Jan 2018)</b> at https://dl.google.com/dl/android/aosp/sailfish-opm1.171019.012-factory-49ed1aec.zip
+2. Download <b>8.1.0 (OPM1.171019.012, Jan 2018)</b> at https://dl.google.com/dl/android/aosp/sailfish-opm1.171019.012-factory-49ed1aec.zip 
+3. Even if you are not going to reinstall your Android OS, downloading the image is necessary for other steps of rooting
+4. Unzip the downloaded file 
+At this point yup can follow the flashing instructions in https://developers.google.com/android/images#instructions, which are also listed below
+5. Make sure you are a developer
+6. Make sure you have enabled USB debugging
+7. Make sure bootloader is unlocked
+8. Use <b>adb</b> to restart in bootloader
+```
+$ adb reboot bootloader
+```
+9. Go to the unzipped image folder (exact path may differ)
+```
+$ cd ~/Downloads/sailfish-opm1.171019.012-factory-49ed1aec/sailfish-opm1.171019.012
+```
+10. Run <b>flash-all</b> script to do the install/falsh of the new OS
+Linux:
+```
+$ ./flash-all.sh
+```
+Windows:
+```
+$ flash-all.bat
+```
+11. Use <b>fastboot</b> to lock your bootloader after flashing is completed and device rebooted
+```
+$ fastboot flashing lock
+```
+12. Use <b>fastboot</b> to reboot back to Android OS
+```
+$ fastboot reboot
+```
+13. Setup Android OS
+14. Become A Developer
+15. Enable USB Debugging
 
 ### Install Ubuntu OS on the Phone
 
