@@ -301,6 +301,7 @@ $ echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 $ source ~/.bashrc
 ```
 9. At this point all is setup and you may want to backup your Ubuntu image to a computer
+    1. This may take 2hrs
 ```
 $ adb pull /storage/emulated/0/linux.img
 ```
