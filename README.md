@@ -249,8 +249,11 @@ $ chsh
 10. GnuPG2 - GnuPG2 is an encryption tool that includes digital signatures and certificates, needed for ROS keys
 11. python-rosinstall - ROS install
 12. Build essentials - build-essentials for ROS
+13. Wget - File download utility
+14. Gkrellm - Floating system monitor (works with SSH X-forwarding)
+
 ```
-$ sudo apt-get install terminator cmake cmake-qt-gui vim chromium-browser net-tools espeak libespeak-dev guvcview gpsd gpsd-clients curl gnupg2 python-rosinstall python-rosinstall-generator python-wstool build-essential
+$ sudo apt-get install terminator cmake cmake-qt-gui vim chromium-browser net-tools espeak libespeak-dev guvcview gpsd gpsd-clients curl gnupg2 python-rosinstall python-rosinstall-generator python-wstool build-essential wget gkrellm
 ```
 
 ### Install ROS on Ubuntu
@@ -305,6 +308,11 @@ $ source ~/.bashrc
 ```
 $ adb pull /storage/emulated/0/linux.img
 ```
+### Fix OpenGL on SSH by Installing VirtualGL
+* Following https://devtalk.nvidia.com/default/topic/828974/jetson-tk1/-howto-install-virtualgl-and-turbovnc-to-jetson-tk1/
+* Fixing the error *Error: couldn't get an RGB, Double-buffered visual*
+* Fixing the error *libGL error: No matching fbConfigs or visuals found
+* Fixing the error *libGL error: failed to load driver: swrast*
 
 ## References
 * Rooting guide for Pixel phones (loosely following its steps) - https://highonandroid.com/android-root/how-to-root-android-10-pixel-pixel-2-pixel-3-pixel-3a
