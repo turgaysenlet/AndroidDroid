@@ -11,6 +11,7 @@ A robot that fully runs on an Android phone.
 #### Hardware
 * Google Pixel 1 phone - or any other Android phone, but the steps may differ
 * USB-C data cable
+* USB webcam - Logitech C925 
 
 ### Become A Developer on Android Phone
 * This is needed to do most of the operations and set some of the detailed settings on the phone
@@ -199,6 +200,112 @@ $ adb pull /storage/emulated/0/linux.img
     1. When completed expect to see ** message
 7. Installation may take more than an hour 
 
+### Remote Access Ubuntu via SSH
+* Remote access the Ubuntu installation from within the phone or any other computer using a secure remote shell
+1. Find the IP address of the Ubuntu using <b>ip</b> command
+    1. Find the IP v4 address that is in the format 123.123.123.123 e.g. 10.0.1.12, or 192.168.3.5, etc.
+```
+$ ip a
+```
+1. Run <b>ssh</b> to connect, using 10.0.1.12 as an example IP address
+
+```
+$ ssh android@10.0.1.12
+```
+2. Run <b>ssh</b> with <b>X-forwarding</b> to be able to connect with X-Windows support over SSH, using 10.0.1.12 as an example IP address
+    1. This will let you run GUI based apps (only simple ones) right from your SSH connection without needing VNC-like remote desktop conections. Some example ROS GUI-based apps are rqt_configure and image_viewer.
+    2. Works directly in Linux clients
+    3. Works in Mac client, after installing X11-Quartz 2.7
+    4. Does not work in Windows (maybe with the Linux subsystem?)
+```
+$ ssh -Y android@10.0.1.12
+```
+3. Try <b>xeyes</b> command to test if X-forwarding worked. You should see a set of graphical eyes in your client computer, over SSH. 
+```
+$ xeyes
+```
+
+### Remote Access Ubuntu via VNC
+
+
+### Change Shell from sh to Bash
+1. Change default shell to <b>bash</b>
+```
+$ chsh
+```
+2. Enter your password
+3. Next time you login/ssh, shell will be bash 
+
+### Install Essential Packages to Ubuntu
+1. Terminator - Divided window terminal (works with SSH X-forwarding)
+2. CMake - Make/install utility (GUI version works with SSH X-forwarding and much easier to use)
+3. Chromium - Open-source Chrome-like web browser
+4. Net-tools - IP and network related tools
+5. Guvcview - Web cam viewer (works with SSH X-forwarding)
+6. Espeak - Linux Text-To-Speech engine (not very good quality, but works)
+7. Vim - Commandline text editor (hard to master, good after getting used to it)
+8. GPSD - GPS tools 
+9. Curl - Command line for transferring data with URLs
+10. GnuPG2 - GnuPG2 is an encryption tool that includes digital signatures and certificates, needed for ROS keys
+11. python-rosinstall - ROS install
+12. Build essentials - build-essentials for ROS
+```
+$ sudo apt-get install terminator cmake cmake-qt-gui vim chromium-browser net-tools espeak libespeak-dev guvcview gpsd gpsd-clients curl gnupg2 python-rosinstall python-rosinstall-generator python-wstool build-essential
+```
+
+### Install ROS on Ubuntu
+* Ubuntu should be installed
+* This will install <b>Robot Operating System (ROS) Melodic</b> onto Ubuntu
+* Following http://wiki.ros.org/melodic/Installation/Ubuntu
+1. Configure your Ubuntu repositories
+Configure your Ubuntu repositories to allow "restricted," "universe," and "multiverse." You can follow the Ubuntu guide for instructions on doing this https://help.ubuntu.com/community/Repositories/Ubuntu
+
+2. Setup your sources.list
+```
+$ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+```
+3. Set up your keys
+```
+sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+```
+4. Update package index
+    1. If this fails, try alternate key setup on the next step
+```
+$ sudo apt update
+```
+5. Set up your keys - alternate
+```
+curl -sSL 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xC1CF6E31E6BADE8868B172B4F42ED6FBAB17C654' | sudo apt-key add -
+```
+6. Install ROS Melodic
+    1. Desktop-Full Install: (Recommended) : ROS, rqt, rviz, robot-generic libraries, 2D/3D simulators and 2D/3D perception
+    ```
+    $ sudo apt install ros-melodic-desktop-full
+    ```
+    1. Desktop Install: ROS, rqt, rviz, and robot-generic libraries
+    ```
+    $ sudo apt install ros-melodic-desktop
+    ```
+    1. ROS-Base: (Bare Bones) ROS package, build, and communication libraries. No GUI tools.
+    ```
+    $ sudo apt install ros-melodic-ros-base
+    ```
+7. Initialize <b>rosdep</b>
+```
+$ sudo rosdep init
+$ rosdep update
+```
+8. Environment Setup
+```
+$ echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
+$ source ~/.bashrc
+```
+9. At this point all is setup and you may want to backup your Ubuntu image to a computer
+```
+$ adb pull /storage/emulated/0/linux.img
+```
+
 ## References
-* For rooting, loosely following - https://highonandroid.com/android-root/how-to-root-android-10-pixel-pixel-2-pixel-3-pixel-3a
+* Rooting guide for Pixel phones (loosely following its steps) - https://highonandroid.com/android-root/how-to-root-android-10-pixel-pixel-2-pixel-3-pixel-3a
 * Robot Operating System (ROS) - http://ros.org/
+* ROS Melodic Ubuntu Install Guide - http://wiki.ros.org/melodic/Installation/Ubuntu
