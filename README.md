@@ -310,3 +310,4 @@ $ adb pull /storage/emulated/0/linux.img
 * Rooting guide for Pixel phones (loosely following its steps) - https://highonandroid.com/android-root/how-to-root-android-10-pixel-pixel-2-pixel-3-pixel-3a
 * Robot Operating System (ROS) - http://ros.org/
 * ROS Melodic Ubuntu Install Guide - http://wiki.ros.org/melodic/Installation/Ubuntu
+* More on chroot method and advanced tips - https://wiki.debian.org/ChrootOnAndroid
